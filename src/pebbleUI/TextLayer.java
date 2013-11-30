@@ -146,6 +146,15 @@ public class TextLayer implements UIElement {
 		return "";
 	}
 
+	private String setTextAlign() {
+		if (alignment != null) {
+			return Line.encapsulate(
+				"text_layer_set_text_alignment("+id+","+alignment.getKey()+")"
+			);
+		}
+		return "";
+	}
+
 	//=== Element Methods =======================//
 
 	@Override
@@ -160,6 +169,7 @@ public class TextLayer implements UIElement {
 			init(parent.getID()) + 
 			setFont() + 
 			setTextColor() +
+			setTextAlign() +
 			setBGColor() +
 			attach(parent.getID())
 			;
