@@ -3,6 +3,7 @@ package pebbleUI.GTypes;
 import java.util.HashMap;
 import java.util.Map;
 import org.w3c.dom.Element;
+import pebbleUI.ResourceID;
 import pebbleUI.compiler.Line;
 import pebbleUI.compiler.UIElement;
 
@@ -47,20 +48,20 @@ public class GBitmap implements UIElement {
 	//=== Properties ===============//
 
 	public String id;
-	public String resource_id;
+	public ResourceID resource_id;
 
 	//=== Constructors =============//
 
 	public GBitmap(String id, String resource_id) {
 		this.id = id;
-		this.resource_id = resource_id;
+		this.resource_id = new ResourceID(resource_id);
 		CustomBitmaps.getSingleton().put(this);
 	}
 
 	//=== Methods ==================//
 
 	public String getKey() {
-		return "RESOURCE_ID_IMAGE_"+resource_id;
+		return resource_id.getID();
 	}
 
 	public String getID() {

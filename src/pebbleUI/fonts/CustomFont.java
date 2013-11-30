@@ -1,6 +1,7 @@
 package pebbleUI.fonts;
 
 import org.w3c.dom.Element;
+import pebbleUI.ResourceID;
 import pebbleUI.compiler.Line;
 import pebbleUI.compiler.UIElement;
 
@@ -22,13 +23,13 @@ public class CustomFont implements Font, UIElement {
 	//=== Properties ===============//
 
 	String id;
-	String resource_id;
+	ResourceID resource_id;
 
 	//=== Constructors =============//
 
 	public CustomFont(String id, String resource) {
 		this.id = id;
-		this.resource_id = resource;
+		this.resource_id = new ResourceID(resource);
 		CustomFonts.getSingleton().put(this);
 	}
 
@@ -36,7 +37,7 @@ public class CustomFont implements Font, UIElement {
 
 	@Override
 	public String getKey() {
-		return "RESOURCE_ID_FONT_"+resource_id;
+		return resource_id.getID();
 	}
 
 	@Override
