@@ -15,7 +15,7 @@ public enum GTextAlignment {
 		this.key = "GTextAlignment"+type;
 	}
 
-	public GTextAlignment getByType(String type) {
+	public static GTextAlignment getByType(String type) {
 		switch (type.toLowerCase()) {
 			case "left":
 				return LEFT;
