@@ -66,9 +66,9 @@ public class Window implements UIElement {
 	@Override
 	public String create(UIElement parent) {
 		return init() +
-			set_bg_color() +
-			set_fullscreen() +
-			stack_push()
+			set_bg_color()
+			+ set_fullscreen()
+//			+ stack_push()
 			;
 	}
 
