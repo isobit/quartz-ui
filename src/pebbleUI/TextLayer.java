@@ -45,7 +45,7 @@ public class TextLayer implements UIElement {
 		}
 		if (e.hasAttribute("text-align")) {
 			String align = e.getAttribute("align");
-			elem.alignment = GTextAlignment.getByType(align);
+			elem.text_align = GTextAlignment.getByType(align);
 		}
 		if (e.hasAttribute("height")) {
 			elem.height = Integer.parseInt(e.getAttribute("height"));
@@ -81,7 +81,7 @@ public class TextLayer implements UIElement {
 	public Font font;
 	public GColor bg_color;
 	public GColor text_color;
-	public GTextAlignment alignment;
+	public GTextAlignment text_align;
 
 	//=== Constructors =============//
 
@@ -147,9 +147,9 @@ public class TextLayer implements UIElement {
 	}
 
 	private String setTextAlign() {
-		if (alignment != null) {
+		if (text_align != null) {
 			return Line.encapsulate(
-				"text_layer_set_text_alignment("+id+","+alignment.getKey()+")"
+				"text_layer_set_text_alignment("+id+","+text_align.getKey()+")"
 			);
 		}
 		return "";
