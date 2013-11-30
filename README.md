@@ -14,8 +14,7 @@ Usage
 You can run QuartzUI with the following command:
 `java -jar 'PATH_TO_QUARTZ_DIST/QuartzUI.jar' ui.xml`
 
-Step-by-Step
-------------
+### Step-by-Step
 1. Create your Pebble project normally with `pebble new-project`
 2. Create a *ui.xml* in the root folder of your project. (See *examples/ui.xml* for help.)
 3. Write your ui.xml.
