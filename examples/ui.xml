@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<window
+    id="parent_window"
+    bg-color="black"
+    fullscreen="false"
+    >
+    <text_layer
+        id="example_text_layer"
+        font="BITHAM_42_MEDIUM_NUMBERS"
+        text-align="center"
+        theme="dark"
+        y="50"
+        width="100%"
+        height="50"
+        />
+</window>
