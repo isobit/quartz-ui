@@ -5,10 +5,8 @@ import pebbleUI.GTypes.GTextAlignment;
 import pebbleUI.compiler.UIElement;
 import org.w3c.dom.Element;
 import pebbleUI.compiler.Line;
-import pebbleUI.fonts.CustomFonts;
 import pebbleUI.fonts.Font;
 import pebbleUI.fonts.Fonts;
-import pebbleUI.fonts.SystemFonts;
 
 /**
  * @author joshglendenning
@@ -24,6 +22,17 @@ public class TextLayer implements UIElement {
 		}
 		if (e.hasAttribute("bg-color")) {
 			elem.bg_color = GColor.getByType(e.getAttribute("bg-color"));
+		}
+		if (e.hasAttribute("theme")) {
+			String theme = e.getAttribute("theme");
+			if (theme.equals("light")) {
+				elem.text_color = GColor.BLACK;
+				elem.bg_color = GColor.WHITE;
+			}
+			if (theme.equals("dark")) {
+				elem.text_color = GColor.WHITE;
+				elem.bg_color = GColor.BLACK;
+			}
 		}
 		if (e.hasAttribute("width")) {
 			String width = e.getAttribute("width");
