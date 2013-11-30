@@ -11,10 +11,15 @@ Initializing and setting basic properties for Pebble UI elements can be cumberso
 Usage
 =====
 
+You can run QuartzUI with the following command:
+`java -jar 'PATH_TO_QUARTZ_DIST/QuartzUI.jar' ui.xml`
+
+Step-by-Step
+------------
 1. Create your Pebble project normally with `pebble new-project`
 2. Create a *ui.xml* in the root folder of your project. (See *examples/ui.xml* for help.)
 3. Write your ui.xml.
     Current the only tags that are availible are *window* and *text_layer*. You must use a window as the root element of the file, which should be pushed to the screen in your *init()* function. All elements MUST have an *id* attribute.
-4. Include *ui.h*. (`#include <ui.h>`)
+5. Include *ui.h*. (`#include <ui.h>`)
     QuartzUI will "compile" your ui.xml into *src/ui.h*, which will initialize all of the defined UI elements. All elements can be referenced by the id given to them by the *id* attribute.
-5. Call *ui_load()* in your *init()* function and *ui_unload()* in your *deinit()* function.
+6. Call *ui_load()* in your *init()* function and *ui_unload()* in your *deinit()* function.
