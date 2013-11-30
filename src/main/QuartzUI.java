@@ -13,6 +13,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import pebbleUI.ActionBarLayer;
+import pebbleUI.GTypes.GBitmap;
 import pebbleUI.TextLayer;
 import pebbleUI.Window;
 import pebbleUI.fonts.CustomFont;
@@ -81,8 +83,14 @@ public class QuartzUI {
 
 		Element e = (Element) node;
 		switch (e.getTagName()) {
+			case "action_bar_layer":
+				elem = ActionBarLayer.parse(e);
+				break;
 			case "custom_font":
 				elem = CustomFont.parse(e);
+				break;
+			case "custom_bitmap":
+				elem = GBitmap.parse(e);
 				break;
 			case "text_layer":
 				elem = TextLayer.parse(e);
