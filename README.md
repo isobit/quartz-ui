@@ -14,9 +14,6 @@ Usage
 1. Create a 'ui.xml' in the root folder of your project. (See 'examples/ui.xml' for help.)
 2. Write your ui.xml.
     Current the only tags that are availible are 'window' and 'text_layer'. You must use a window as the root element of the file, which should be pushed to the screen in your 'init()' function. All elements MUST have an 'id' attribute.
-3. Include 'ui.h'.
-    ```C
-    #include <ui.h>
-    ```
+3. Include 'ui.h'. (`#include <ui.h>`)
     QuartzUI will "compile" your ui.xml into 'src/ui.h', which will initialize all of the defined UI elements. All elements can be referenced by the id given to them by the 'id' attribute.
 4. Call 'ui_load()' in your 'init()' function and 'ui_unload()' in your 'deinit()' function.
