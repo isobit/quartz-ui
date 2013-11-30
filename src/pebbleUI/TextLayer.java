@@ -43,6 +43,10 @@ public class TextLayer implements UIElement {
 				elem.width = Integer.parseInt(e.getAttribute("width"));
 			}
 		}
+		if (e.hasAttribute("text-align")) {
+			String align = e.getAttribute("align");
+			elem.alignment = GTextAlignment.getByType(align);
+		}
 		if (e.hasAttribute("height")) {
 			elem.height = Integer.parseInt(e.getAttribute("height"));
 		}
