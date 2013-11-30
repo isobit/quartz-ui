@@ -44,24 +44,6 @@ public class QuartzUI {
 	
 	//=== Methods ==================//
 
-	public UITree getTestTree() {
-		UINode window = new UINode(new Window("test_window"));
-		
-		TextLayer text = new TextLayer("test_text");
-		text.font = SystemFonts.Fonts.ROBOTO_CONDENSED_21.getFont();
-		UINode text_layer = new UINode(text);
-		window.attach(text_layer);
-		
-		TextLayer text2 = new TextLayer("asdf");
-		text2.font = SystemFonts.Fonts.ROBOTO_CONDENSED_21.getFont();
-		UINode text_layer2 = new UINode(text2);
-		window.attach(text_layer2);
-		
-		UITree tree = new UITree(window);
-
-		return tree;
-	}
-	
 	public UITree parseXML(File xmlfile) {
 
 		UITree tree = null;
