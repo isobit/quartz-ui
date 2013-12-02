@@ -22,3 +22,42 @@ You can run QuartzUI with the following command:
 5. Include *ui.h*. (`#include <ui.h>`)
     QuartzUI will "compile" your ui.xml into *src/ui.h*, which will initialize all of the defined UI elements. All elements can be referenced by the id given to them by the *id* attribute.
 6. Call *ui_load()* in your *init()* function and *ui_unload()* in your *deinit()* function.
+
+Example
+=======
+
+ui.xml:
+```
+<window
+    id="parent_window"
+    bg-color="black"
+    fullscreen="false"
+    >
+    <text_layer
+        id="example_text_layer"
+        font="BITHAM_42_MEDIUM_NUMBERS"
+        text-align="center"
+        theme="dark"
+        y="50"
+        width="100%"
+        height="50"
+        />
+</window>
+```
+app.c:
+```
+static void init(void) {
+    ui_load();
+    window_stack_push(parent_window, true);
+}
+
+static void deinit(void) {
+    ui_unload();
+}
+
+int main(void) {
+  init();
+  app_event_loop();
+  deinit();
+}
+```
