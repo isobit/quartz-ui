@@ -46,6 +46,9 @@ ui.xml:
 ```
 app.c:
 ```
+#include <pebble.h>
+#include <ui.h>
+
 static void init(void) {
     ui_load();
     window_stack_push(parent_window, true);
