@@ -35,7 +35,7 @@ ui.xml:
     >
     <text_layer
         id="example_text_layer"
-        font="BITHAM_42_MEDIUM_NUMBERS"
+        font="GOTHIC_18"
         text-align="center"
         theme="dark"
         y="50"
@@ -51,6 +51,7 @@ app.c:
 
 static void init(void) {
     ui_load();
+    text_layer_set_text(example_text_layer, "Hello, world!");
     window_stack_push(parent_window, true);
 }
 
