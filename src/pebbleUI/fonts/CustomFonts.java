@@ -32,7 +32,7 @@ public class CustomFonts implements FontLibrary {
 	//=== Methods ==================//
 
 	public void put(CustomFont font) {
-		map.put(font.id, font);
+		map.put(font.getID(), font);
 	}
 
 	@Override
