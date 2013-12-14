@@ -3,7 +3,7 @@ package pebbleUI.GTypes;
 import java.util.HashMap;
 import java.util.Map;
 import org.w3c.dom.Element;
-import pebbleUI.ResourceID;
+import pebbleUI.ResourceName;
 import pebbleUI.compiler.Line;
 import pebbleUI.compiler.UIElement;
 
@@ -13,9 +13,8 @@ import pebbleUI.compiler.UIElement;
 public class GBitmap implements UIElement {
 
 	public static UIElement parse(Element e) {
-		String id = e.getAttribute("id");
-		String resource = e.getAttribute("resource-id");
-		GBitmap elem = new GBitmap(id, resource);
+		String resource = e.getAttribute("resource-name");
+		GBitmap elem = new GBitmap(resource);
 		return elem;
 	}
 
@@ -35,7 +34,7 @@ public class GBitmap implements UIElement {
 			this.bitmaps = new HashMap<>();
 		}
 		public void put(GBitmap bitmap) {
-			bitmaps.put(bitmap.id, bitmap);
+			bitmaps.put(bitmap.getID(), bitmap);
 		}
 		public boolean contains(String id) {
 			return bitmaps.containsKey(id);
@@ -47,36 +46,35 @@ public class GBitmap implements UIElement {
 
 	//=== Properties ===============//
 
-	public String id;
-	public ResourceID resource_id;
+	public ResourceName resource;
 
 	//=== Constructors =============//
 
-	public GBitmap(String id, String resource_id) {
-		this.id = id;
-		this.resource_id = new ResourceID(resource_id);
+	public GBitmap(String resource_id) {
+		this.resource = new ResourceName(resource_id);
 		CustomBitmaps.getSingleton().put(this);
 	}
 
 	//=== Methods ==================//
 
 	public String getKey() {
-		return resource_id.getID();
+		return resource.getKey();
 	}
 
+	@Override
 	public String getID() {
-		return id;
+		return resource.getID();
 	}
 
 	@Override
 	public String getDeclaration() {
-		return Line.encapsulate("static GBitmap *"+id);
+		return Line.encapsulate("static GBitmap *"+getID());
 	}
 
 	//=== Creation =======================//
 
 	private String init() {
-		return Line.encapsulate(id+"=gbitmap_create_with_resource("+getKey()+")");
+		return Line.encapsulate(getID()+"=gbitmap_create_with_resource("+getKey()+")");
 	}
 
 	@Override
@@ -87,7 +85,7 @@ public class GBitmap implements UIElement {
 
 	@Override
 	public String destroy(UIElement parent) {
-		return Line.encapsulate("gbitmap_destroy("+id+")");
+		return Line.encapsulate("gbitmap_destroy("+getID()+")");
 	}
 
 }

@@ -15,10 +15,10 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import pebbleUI.ActionBarLayer;
 import pebbleUI.GTypes.GBitmap;
+import pebbleUI.Layer;
 import pebbleUI.TextLayer;
 import pebbleUI.Window;
 import pebbleUI.fonts.CustomFont;
-import pebbleUI.fonts.SystemFonts;
 
 /**
  *
@@ -91,6 +91,9 @@ public class QuartzUI {
 				break;
 			case "custom_bitmap":
 				elem = GBitmap.parse(e);
+				break;
+			case "layer":
+				elem = Layer.parse(e);
 				break;
 			case "text_layer":
 				elem = TextLayer.parse(e);
