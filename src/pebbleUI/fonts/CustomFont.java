@@ -1,7 +1,7 @@
 package pebbleUI.fonts;
 
 import org.w3c.dom.Element;
-import pebbleUI.ResourceID;
+import pebbleUI.ResourceName;
 import pebbleUI.compiler.Line;
 import pebbleUI.compiler.UIElement;
 
@@ -13,8 +13,8 @@ public class CustomFont implements Font, UIElement {
 	//=== Parser =======================//
 
 	public static UIElement parse(Element e) {
+		String resource = e.getAttribute("resource-name");
 		String id = e.getAttribute("id");
-		String resource = e.getAttribute("resource-id");
 		CustomFont elem = new CustomFont(id, resource);
 
 		return elem;
@@ -23,13 +23,13 @@ public class CustomFont implements Font, UIElement {
 	//=== Properties ===============//
 
 	String id;
-	ResourceID resource_id;
+	ResourceName name;
 
 	//=== Constructors =============//
 
 	public CustomFont(String id, String resource) {
 		this.id = id;
-		this.resource_id = new ResourceID(resource);
+		this.name = new ResourceName(resource);
 		CustomFonts.getSingleton().put(this);
 	}
 
@@ -37,12 +37,12 @@ public class CustomFont implements Font, UIElement {
 
 	@Override
 	public String getKey() {
-		return resource_id.getID();
+		return name.getKey();
 	}
 
 	@Override
 	public String load() {
-		return id;
+		return getID();
 	}
 
 	@Override
@@ -52,17 +52,17 @@ public class CustomFont implements Font, UIElement {
 
 	@Override
 	public String getDeclaration() {
-		return Line.encapsulate("static GFont "+id);
+		return Line.encapsulate("static GFont "+getID());
 	}
 
 	@Override
 	public String create(UIElement parent) {
-		return Line.encapsulate(id+" = "+"fonts_load_custom_font(resource_get_handle("+getKey()+"))");
+		return Line.encapsulate(getID()+" = "+"fonts_load_custom_font(resource_get_handle("+getKey()+"))");
 	}
 
 	@Override
 	public String destroy(UIElement parent) {
-		return Line.encapsulate("fonts_unload_custom_font("+id+")");
+		return Line.encapsulate("fonts_unload_custom_font("+getID()+")");
 	}
 
 
